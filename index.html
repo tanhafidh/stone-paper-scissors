@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stone paper scissor </title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            padding-top: 80px;
+
+        }
+
+        h1 {
+            color: #333;
+
+        }
+
+        .choices button {
+            font-size: 50px;
+            padding: 30px 50px;
+            margin: 30px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 40px;
+            font-size: 42px;
+            font-weight: initial;
+        }
+
+        .active-button {
+            color: rgb(94, 55, 55);
+            background-color: burlywood;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Stone paper scissor</h1>
+    <h4>computer </h4>
+    <div>
+        <button class="computer-button">rock</button>
+        <button class="computer-button">paper</button>
+        <button class="computer-button">scissor</button>
+    </div>
+
+    <div>
+
+        <h4>player</h4>
+        <button class="my-button">rock</button>
+        <button class="my-button">paper</button>
+        <button class="my-button">scissor</button>
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+        let mybuttons = document.getElementsByClassName("my-button")
+        for (let i = 0; i < mybuttons.length; i++) {
+            mybuttons[i].addEventListener("click", function () {
+                mybuttons[i].classList.add("active-button")
+                for (let j = 0; j < mybuttons.length; j++) {
+                    if (i !== j) {
+                        mybuttons[j].classList.remove("active-button")
+                    }
+                }
+                const computerindex = Math.round(Math.random() * 2);
+                console.log("computerindex", computerindex)
+                let computerbutton = document.getElementsByClassName("computer-button");
+                console.log("com",computerbutton)
+                computerbutton[computerindex].classList.add("active-button")
+                for (let j = 0; j < computerbutton.length; j++) {
+                    if (computerindex !== j) {
+                        computerbutton[j].classList.remove("active-button")
+                    }
+                }
+                let result = "computer won!"
+                if (computerindex == i) {
+                    result = "its a draw"
+                }
+                else if (i == 0 && computerindex == 2 || i == 1 && computerindex == 0 || i == 2 && computerindex == 1) {
+
+                    result = "you win"
+                }
+
+
+                setTimeout(function () {
+  alert(result);
+}, 1000); // Delay alert by 1 second
+
+
+                
+                
+                
+                
+                
+                
+
+                
+
+             
+            });
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>
